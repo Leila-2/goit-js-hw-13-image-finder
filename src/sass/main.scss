@@ -5,3 +5,88 @@
 
 // Стили для файла с примером HTML-фрагмента
 //@import './example';
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+img {
+  width: 100%;
+}
+body {
+  padding: 20px;
+  background-color: rgb(66, 66, 66);
+  //display: flex;
+  //   text-align: center;
+  //   align-items: center;
+  color: aliceblue;
+}
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  &-item {
+    //align-items: baseline;
+    margin-right: 30px;
+  }
+}
+.gallery {
+  //display: flex;
+  flex-wrap: wrap;
+  margin-right: -30px;
+
+  position: relative;
+  display: flex;
+
+  &-item {
+    width: 100%;
+    flex-basis: calc((100% - 2 * 30px) / 2);
+    // text-align: center;
+    // /* margin-right: 30px; */
+    // flex-basis: calc((100% - 2 * 30px) / 2);
+    &:not(:last-child) {
+      margin-right: 30px;
+    }
+  }
+}
+.input {
+  background-color: transparent;
+  color: aliceblue;
+  width: 100%;
+  height: 50px;
+  border: 2px solid rgb(213, 216, 66);
+  box-sizing: border-box;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding-left: 16px;
+}
+.load-btn {
+  font-size: 16px;
+  line-height: 1.87;
+  font-weight: 700;
+
+  letter-spacing: 0.06em;
+  color: rgb(49, 49, 49);
+  background-color: rgb(213, 216, 66);
+  cursor: pointer;
+  //   margin-left: auto;
+  //   margin-right: auto;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+}
+i {
+  color: aliceblue;
+  height: 40px;
+}

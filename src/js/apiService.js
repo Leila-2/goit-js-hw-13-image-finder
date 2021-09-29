@@ -7,7 +7,7 @@ const form = document.getElementById('search-form')
 const API_KEY = `23558220-fb5623a2d9636919de7621278`;
 const BASE_URL = `https://pixabay.com/api/?image_type=photo&orientation=horizontal`
 
-let searchParam = ``
+let searchParam = ''
 let pageNumb = 1
 
 //=======Form AddEventListener=======
@@ -77,7 +77,7 @@ let pageNumb = 1
 })*/
 const onSearchForm = function (e) {
     e.preventDefault()
-    searchParam = e.target.elements.input.value
+    searchParam = e.currentTarget.elements.query.value
     console.log(searchParam)
     // console.log('Input result:', e.target.elements.input.value)
     let params = `&q=${searchParam}&page=${pageNumb}&per_page=5&key=${API_KEY}`
@@ -94,7 +94,7 @@ const onSearchForm = function (e) {
             let result = array.map(elem => {
                 const { webformatURL, largeImageURL, likes, views, comments, downloads } = elem
                 return `
-            <li>
+            <li class="gallery-item">
             <div class="photo-card">
             <img src="${webformatURL}" loading="lazy" alt="" data-src = "${largeImageURL}"/>
             
@@ -121,8 +121,11 @@ const onSearchForm = function (e) {
             `
             }).join('')
             list.insertAdjacentHTML('beforeend', result)
-        })
+        }).catch(err => {
+            return alert('Ошибочка🥵', err)
+        }).finally(() => form.reset())
 }
+
 //=======Button AddEventListener=======
 const onloadMoreBtn = function () {
     pageNumb += 1
@@ -141,7 +144,7 @@ const onloadMoreBtn = function () {
                 console.log('Result:', elem)
                 const { webformatURL, largeImageURL, likes, views, comments, downloads } = elem
                 return `
-            <li>
+            <li class="gallery-item">
             <div class="photo-card">
             <img src="${webformatURL}" loading="lazy" alt="" data-src = "${largeImageURL}"/>
             
